@@ -24,6 +24,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins")
 
+
 local config_path = vim.fn.stdpath("config") .. "/lua/configs"
 local config_files = vim.fn.glob(config_path .. "/*.lua", false, true)
 
