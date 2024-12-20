@@ -74,3 +74,4 @@ end, {})
 local fterm = require('FTerm')
 map('n', '<A-i>', fterm.toggle, {})
 map('t', '<A-i>', fterm.toggle, {})
+
