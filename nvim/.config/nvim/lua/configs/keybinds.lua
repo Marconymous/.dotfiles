@@ -4,16 +4,18 @@ local map = vim.keymap.set
 vim.api.nvim_set_keymap("n", "<leader>x", ":bd<CR>", { noremap = true, silent = true })
 
 -- Navigation
-map('n', '<C-h>', '<C-w>h')
-map('n', '<C-j>', '<C-w>j')
-map('n', '<C-k>', '<C-w>k')
-map('n', '<C-l>', '<C-w>l')
+map("n", "<C-h>", "<C-w>h")
+map("n", "<C-j>", "<C-w>j")
+map("n", "<C-k>", "<C-w>k")
+map("n", "<C-l>", "<C-w>l")
+map("n", "<Tab>", "<cmd>:BufferLineCycleNext<CR>")
+map("n", "<S-Tab>", "<cmd>:BufferLineCyclePrev<CR>")
 
 -- Telescope Keybinds
 local telescope_builtins = require("telescope.builtin")
-map("n", "<C-p>", function ()
-  telescope_builtins.find_files({follow = true})
-end , {})
+map("n", "<C-p>", function()
+	telescope_builtins.find_files({ follow = true })
+end, {})
 map("n", "<leader>fw", telescope_builtins.live_grep, {})
 map("n", "<C-b>", telescope_builtins.buffers, { desc = "Telescope Buffers" })
 
@@ -53,13 +55,12 @@ map("n", "°", comment.toggle.blockwise.current, {})
 --   Visual Mode Comments
 
 local function get_selection()
-
 	local esc = vim.api.nvim_replace_termcodes("<Esc>", true, false, true)
 	vim.api.nvim_feedkeys(esc, "x", false)
 
 	local line1 = vim.fn.line("'<")
 	local line2 = vim.fn.line("'>")
-  return {line1, line2}
+	return { line1, line2 }
 end
 
 map("x", "§", function()
@@ -71,7 +72,6 @@ map("x", "°", function()
 end, {})
 
 -- Floating term
-local fterm = require('FTerm')
-map('n', '<A-i>', fterm.toggle, {})
-map('t', '<A-i>', fterm.toggle, {})
-
+local fterm = require("FTerm")
+map("n", "<A-i>", fterm.toggle, {})
+map("t", "<A-i>", fterm.toggle, {})
