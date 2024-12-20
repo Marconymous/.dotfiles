@@ -3,6 +3,12 @@ local map = vim.keymap.set
 -- General
 vim.api.nvim_set_keymap("n", "<leader>x", ":bd<CR>", { noremap = true, silent = true })
 
+-- Navigation
+map('n', '<C-h>', '<C-w>h')
+map('n', '<C-j>', '<C-w>j')
+map('n', '<C-k>', '<C-w>k')
+map('n', '<C-l>', '<C-w>l')
+
 -- Telescope Keybinds
 local telescope_builtins = require("telescope.builtin")
 map("n", "<C-p>", function ()
@@ -63,3 +69,8 @@ end, {})
 map("x", "°", function()
 	comment.toggle.blockwise(vim.fn.visualmode(get_selection()))
 end, {})
+
+-- Floating term
+local fterm = require('FTerm')
+map('n', '<A-i>', fterm.toggle, {})
+map('t', '<A-i>', fterm.toggle, {})
