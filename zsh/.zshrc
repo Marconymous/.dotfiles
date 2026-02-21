@@ -2,17 +2,18 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="funky"
 
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 plugins=(
     git
     archlinux
-    zsh-autosuggestions
-    zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
 
 function pokemans() {
-  pokemon-colorscripts --no-title -rn chandelure,arbok,nidoking,gengar,snorlax,mimikyu,spectrier
+  pokemon-colorscripts --no-title --random
 }
 pokemans
 
@@ -41,3 +42,9 @@ alias neofetch="fastfetch"
 # ZOXIDE
 eval "$(zoxide init zsh --cmd cd)"
 
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
